@@ -2,7 +2,7 @@
 Analysis stub for course Informatics and cognitive science I
 
 1. clone git project into your own repository
-2. Download data from [ETRA dataset] https://etra.acm.org/2019/challenge.html
+2. Download data from [ETRA dataset](https://etra.acm.org/2019/challenge.html)
 3. Edit Analysis.Rmd file and perform your own analysis
 4. Send me knitted html file
 5. After submission deadline (TBA), push the changes back into the repo, so I can merge the analysis into one file
