@@ -3,10 +3,12 @@ Analysis stub for course Informatics and cognitive science I
 
 1. clone git project into your own repository
 2. Download data from [ETRA dataset](https://etra.acm.org/2019/challenge.html)
-3. Edit Analysis.Rmd file and perform your own analysis
+3. Come up with 1-3 hypotheses that you want to explore and send me an email with proposed hypotheses, so I can approve them
+4. After approval, edit Analysis.Rmd file and perform your own analysis
 4. Send me knitted html file
 
-Deadline 31.12.2020
+Deadline for hypotheses approval: 30.11.2020
+Deadline fo analysis: 31.12.2020
 
 # What should be in the report
 
