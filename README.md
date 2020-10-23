@@ -22,3 +22,5 @@ Use **dplyr** package. There are tutorials available, but you can also try to fi
 There are several verbs that can be used for data manipulation. Dplyr uses non standard evaluation, so most of the arguments do not need to be written in brackets
 
 There are also *join functions which work similarly as in SQL. They might be useful when combining tables. 
+
+There are multiple tutorials for dplyr, which you can read such as [this one](https://genomicsclass.github.io/book/pages/dplyr_tutorial.html) or [this one](https://rpubs.com/coleeagland/dplyrtutorialforjohnandjenn)
