@@ -20,8 +20,7 @@ Deadline fo analysis: 31.12.2020
 
 # How to manipulate the data?
 
-Use **dplyr** package. There are tutorials available, but you can also try to fill 00_dplyr.Rmd and send it to me for verification. 
-There are several verbs that can be used for data manipulation. Dplyr uses non standard evaluation, so most of the arguments do not need to be written in brackets
+Use **dplyr** package. There are several verbs that can be used for data manipulation, which are covered in every tutorial. Dplyr uses non standard evaluation, so most of the arguments do not need to be written in brackets
 
 There are also *join functions which work similarly as in SQL. They might be useful when combining tables. 
 
