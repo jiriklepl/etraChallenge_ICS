@@ -1,14 +1,3 @@
-library(raster)
-library(imager)
-library(tidyverse)
-library(here)
-library(ez)
-library(saccades)
-require(ggplot2) 
-
-library(papaja)
-
-
 data_pth <- "data"
 
 load_files <- function(subject) {
@@ -148,10 +137,10 @@ do_first <- function(subject) {
       results <- rbind(results, result)
     else
       results <- result
-    cat("correlation in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
+    cat("correlation of P and distance from target in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
   }
 
-  cat("total correlation: ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
+  cat("total correlation of P and distance from target : ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
 
   return (results)
 }
@@ -166,35 +155,15 @@ do_second <- function(subject) {
       results <- rbind(results, result)
     else
       results <- result
-    cat("correlation in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
+    cat("correlation of P and distance from edge in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
   }
 
-  cat("total correlation: ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
+  cat("total correlation of P and distance from edge: ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
 
   return (results)
 }
 
-do_third_two <- function(subject) {
-  df_fix_puzzle <- load_files(subject)
-  for (i in 1:16) {
-    if (!(sprintf("puz%03d.csv", i) %in% df_fix_puzzle$stimulus_id))
-      next
-    result <- as.data.frame(third_test(i, df_fix_puzzle) %>% select(time, P))
-    if (exists('results'))
-      results <- rbind(results, result)
-    else
-      results <- result
-
-    cat(cor(result$P, result$time**(1/2)), '\n')
-    cat(paste(100 * i / 15, '%', ''), '\n')
-  }
-
-  return (cor(results$P, results$time**(1/2)))
-
-  return (results)
-}
-
-do_third <- function(subject) {
+do_third <- function(subject, silent = FALSE) {
   df_fix_puzzle <- load_files(subject)
   for (i in 1:16) {
     if (!(sprintf("puz%03d.csv", i) %in% df_fix_puzzle$stimulus_id))
@@ -211,16 +180,17 @@ do_third <- function(subject) {
     first <- result[ns,][1:(nrow(result) %/% 2), ]
     second <- result[ns,][(nrow(result) %/% 2 + 1):nrow(result), ]
 
-    cat("t.test (", i, "): p.value = ", t.test(first$P, second$P)$p.value, '\n')
+    if (silent == FALSE)
+      cat("t.test (", i, "): p.value = ", t.test(first$P, second$P)$p.value, '\n')
   }
 
-  results$P2 <- 1.381e+03 + 5.332e-03*results$time
-  ns <- order(results$P2)
+  ns <- order(results$time)
 
   first <- results[ns,][1:(nrow(results) %/% 2), ]
   second <- results[ns,][(nrow(results) %/% 2 + 1):nrow(results), ]
 
-  cat("t.test (final): p.value = ", t.test(first$P, second$P)$p.value, '\n')
+  if (silent == FALSE)
+    cat("t.test (final): p.value = ", t.test(first$P, second$P)$p.value, '\n')
 
   return (results)
 }
@@ -266,8 +236,7 @@ third_hyp <- function() {
       results <- result
   }
 
-  results$P2 <- 1.381e+03 + 5.332e-03*results$time
-  ns <- order(results$P2)
+  ns <- order(results$time)
 
   first <- results[ns,][1:(nrow(results) %/% 2), ]
   second <- results[ns,][(nrow(results) %/% 2 + 1):nrow(results), ]
@@ -275,10 +244,17 @@ third_hyp <- function() {
   cat("t.test (final): p.value = ", t.test(first$P, second$P)$p.value, '\n')
 }
 
-do_assignment <- function() {
-  first_hyp()
-  second_hyp()
-  third_hyp()
-}
+third_hyp_two <- function() {
+  # cat("here go p.values for null hypothesis that P is independend on Time:", '\n')
+  for (i in participants) {
+    cat("participant ", i, ":", '\n')
+    result <- as.data.frame(do_third(i, silent = TRUE))
+    if (exists('results'))
+      results <- rbind(results, result)
+    else
+      results <- result
 
-do_assignment()
+    cat("correlation of P and time in ",i,":",
+        cor(result$P[order(result$time)], result$time[order(result$time)]), '\n')
+  }
+}
