@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Load libraries</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Load libraries</h2>
+
+<pre><code class="r">library(raster)
+library(imager)
+library(tidyverse)
+library(here)
+library(ez)
+library(saccades)
+require(ggplot2) 
+
+library(papaja)
+
+
+source(&quot;solution.R&quot;) # functions are in separate file for easier debugging
+</code></pre>
+
+<h2>Download data</h2>
+
+<p>Download zip file from the web page. Description of the dataset is on the page <a href="https://etra.acm.org/2019/challenge.html">ETRA dataset description</a></p>
+
+<pre><code class="r">data_pth &lt;- &quot;data&quot;
+if(!dir.exists(data_pth)) {
+  dir.create(data_pth)
+}
+# uncomment following file for downloading data
+# download.file(&quot;http://smc.neuralcorrelate.com/ETRA2019/ETRA2019Challenge.zip&quot;,here(data_pth,&quot;ETRA2019Challenge.zip&quot;))
+</code></pre>
+
+<p>Than unzip data and move them to the folder. The directory <em>data</em> should therefore contain following directories/files</p>
+
+<ul>
+<li>data</li>
+<li>images</li>
+<li>DataSummary.csv</li>
+</ul>
+
+<h2>Load data</h2>
+
+<p>You can use <em>readr</em> package, which is supplied within <em>tidyverse</em> package bundle. Multiple files can be read using these lines of code. For example, we want only load Free viewing condition in Puzzle subtask for subject 9</p>
+
+<pre><code class="r"># local_data_pth &lt;- here(data_pth, &quot;data&quot;, &quot;009&quot;)
+# files &lt;- dir(local_data_pth, pattern = &quot;.*Fixation_Puzzle_.*.csv&quot;) # get file names
+
+# df_fix_puzzle &lt;- files %&gt;%
+#   map(read_data) %&gt;% 
+#   reduce(rbind) %&gt;% as_tibble()
+
+# local_data_pth &lt;- here(data_pth, &quot;data&quot;, &quot;009&quot;)
+# files &lt;- dir(local_data_pth, pattern = &quot;.*Fixation_Waldo_.*.csv&quot;) # get file names
+
+# df_fix_waldo &lt;- files %&gt;%
+#   map(read_data) %&gt;% 
+#   reduce(rbind) %&gt;% as_tibble()
+</code></pre>
+
+<p>You can easily adjust this code for your hypotheses.</p>
+
+<h2>Hypotheses</h2>
+
+<p>All the hypotheses apply to the &ldquo;puzzle task&rdquo; experiments:</p>
+
+<ol>
+<li>Is the length of fixations dependent on whether it is directed at a location close to the differences in the puzzle experiments?</li>
+<li>Is the length of fixations dependent on the distance from the boundary of the image</li>
+<li>Is there any significant dependence of pupil dilatation on time</li>
+</ol>
+
+<h2>Data manipulation</h2>
+
+<p>In the whole analysis for all hypotheses we simplify the data by taking averages of values of both eyes instead of the values themselves wherever applicable (pupil dilatations, x/y locations, etc.).</p>
+
+<p>In the analysis for the first two hypotheses we use the provided method for detecting fixations, for the first hypothesis we compute the difference of the left and the right image, this is done by taking the top 3% percentile of pixels with the most color distance (using euclidean metric). This leaves a lot of edges and textured areas as false positives so the script uses &ldquo;CannyEdge&rdquo; edge detection to partially correct this.</p>
+
+<p>But even with the false positives we should get at least partially consistent correlation if the hypotheses are true.</p>
+
+<pre><code class="r">first_hyp()
+</code></pre>
+
+<pre><code>## here go correlations of lengths of fixations and their distance from the assumed closest target: 
+## participant  9 : 
+## correlation of P and distance from target in  1 :  0.02421356 
+## correlation of P and distance from target in  2 :  -0.00696832 
+## correlation of P and distance from target in  3 :  0.109531 
+## correlation of P and distance from target in  4 :  0.01291818 
+## correlation of P and distance from target in  5 :  0.00044308 
+## correlation of P and distance from target in  6 :  -0.1263372 
+## correlation of P and distance from target in  7 :  -0.09601439 
+## correlation of P and distance from target in  8 :  -0.01050749 
+## correlation of P and distance from target in  9 :  0.07857743 
+## correlation of P and distance from target in  10 :  -0.0745141 
+## correlation of P and distance from target in  11 :  0.02592986 
+## correlation of P and distance from target in  12 :  -0.09552726 
+## correlation of P and distance from target in  13 :  -0.1510649 
+## correlation of P and distance from target in  14 :  -0.1326136 
+## correlation of P and distance from target in  15 :  -0.05537004 
+## total correlation of P and distance from target :  -0.04094406 
+## participant  19 : 
+## correlation of P and distance from target in  1 :  -0.1319938 
+## correlation of P and distance from target in  2 :  -0.1045739 
+## correlation of P and distance from target in  3 :  0.07335972 
+## correlation of P and distance from target in  4 :  0.02422126 
+## correlation of P and distance from target in  5 :  0.01957813 
+## correlation of P and distance from target in  6 :  0.09881184 
+## correlation of P and distance from target in  7 :  -0.009676994 
+## correlation of P and distance from target in  8 :  -0.03904533 
+## correlation of P and distance from target in  9 :  -0.07243768 
+## correlation of P and distance from target in  10 :  -0.08989861 
+## total correlation of P and distance from target :  -0.01610527 
+## participant  22 : 
+## correlation of P and distance from target in  1 :  0.02064465 
+## correlation of P and distance from target in  2 :  -0.1334085 
+## correlation of P and distance from target in  3 :  0.05271491 
+## correlation of P and distance from target in  4 :  0.07763369 
+## correlation of P and distance from target in  5 :  -0.05022205 
+## correlation of P and distance from target in  6 :  -0.07052135 
+## correlation of P and distance from target in  7 :  -0.05037292 
+## correlation of P and distance from target in  8 :  -0.01657375 
+## correlation of P and distance from target in  9 :  0.04369591 
+## correlation of P and distance from target in  10 :  -0.05604904 
+## correlation of P and distance from target in  11 :  0.06615146 
+## correlation of P and distance from target in  12 :  -0.1903581 
+## correlation of P and distance from target in  13 :  0.1697283 
+## correlation of P and distance from target in  14 :  -0.07743852 
+## correlation of P and distance from target in  15 :  0.1021546 
+## total correlation of P and distance from target :  -0.0196724 
+## participant  58 : 
+## correlation of P and distance from target in  1 :  -0.1482411 
+## correlation of P and distance from target in  2 :  -0.2895495 
+## correlation of P and distance from target in  3 :  0.07512979 
+## correlation of P and distance from target in  4 :  -0.04593118 
+## correlation of P and distance from target in  5 :  -0.009225387 
+## correlation of P and distance from target in  6 :  -0.024165 
+## correlation of P and distance from target in  7 :  0.05127563 
+## correlation of P and distance from target in  8 :  0.04728343 
+## correlation of P and distance from target in  9 :  -0.04902852 
+## correlation of P and distance from target in  10 :  0.009804643 
+## correlation of P and distance from target in  11 :  -0.02955648 
+## correlation of P and distance from target in  12 :  -0.05844977 
+## correlation of P and distance from target in  13 :  -0.1234377 
+## correlation of P and distance from target in  14 :  0.05361566 
+## correlation of P and distance from target in  15 :  0.1012264 
+## total correlation of P and distance from target :  -0.09518138 
+## participant  59 : 
+## correlation of P and distance from target in  1 :  0.0795556 
+## correlation of P and distance from target in  2 :  0.1202648 
+## correlation of P and distance from target in  3 :  0.1028179 
+## correlation of P and distance from target in  4 :  -0.06134059 
+## correlation of P and distance from target in  5 :  0.06688221 
+## correlation of P and distance from target in  6 :  -0.140325 
+## correlation of P and distance from target in  7 :  0.05431032 
+## correlation of P and distance from target in  8 :  0.008544009 
+## correlation of P and distance from target in  9 :  0.187991 
+## correlation of P and distance from target in  10 :  0.002407716 
+## correlation of P and distance from target in  11 :  -0.1072862 
+## correlation of P and distance from target in  12 :  -0.1960128 
+## correlation of P and distance from target in  13 :  0.1346123 
+## correlation of P and distance from target in  14 :  -0.06296438 
+## correlation of P and distance from target in  15 :  -0.1318202 
+## total correlation of P and distance from target :  -0.004124556 
+## participant  60 : 
+## correlation of P and distance from target in  1 :  -0.154434 
+## correlation of P and distance from target in  2 :  -0.1078771 
+## correlation of P and distance from target in  3 :  0.1352927 
+## correlation of P and distance from target in  4 :  0.08842867 
+## correlation of P and distance from target in  5 :  -0.0646814 
+## correlation of P and distance from target in  6 :  -0.006689772 
+## correlation of P and distance from target in  7 :  0.04470462 
+## correlation of P and distance from target in  8 :  0.02978639 
+## correlation of P and distance from target in  9 :  0.06646774 
+## correlation of P and distance from target in  10 :  -0.0008625002 
+## correlation of P and distance from target in  11 :  0.02393944 
+## correlation of P and distance from target in  12 :  -0.1422582 
+## correlation of P and distance from target in  13 :  0.01695833 
+## correlation of P and distance from target in  14 :  -0.05739342 
+## correlation of P and distance from target in  15 :  -0.05022345 
+## total correlation of P and distance from target :  0.01551761 
+## participant  62 : 
+## correlation of P and distance from target in  1 :  -0.06878474 
+## correlation of P and distance from target in  2 :  0.01030344 
+## correlation of P and distance from target in  3 :  0.01183205 
+## correlation of P and distance from target in  4 :  -0.07332242 
+## correlation of P and distance from target in  5 :  0.05155772 
+## correlation of P and distance from target in  6 :  0.03749616 
+## correlation of P and distance from target in  7 :  0.1177513 
+## correlation of P and distance from target in  8 :  -0.08914822 
+## correlation of P and distance from target in  9 :  0.07763539 
+## correlation of P and distance from target in  10 :  0.05055764 
+## correlation of P and distance from target in  11 :  -0.04283396 
+## correlation of P and distance from target in  12 :  -0.04331571 
+## correlation of P and distance from target in  13 :  -0.1043926 
+## correlation of P and distance from target in  14 :  0.002969826 
+## correlation of P and distance from target in  15 :  0.09061876 
+## total correlation of P and distance from target :  0.002622864 
+## total correlation:  -0.02788962
+</code></pre>
+
+<pre><code class="r">second_hyp()
+</code></pre>
+
+<pre><code>## here go correlations of lengths of fixations and their distance from the edge of the image: 
+## participant  9 : 
+## correlation of P and distance from edge in  1 :  0.07370558 
+## correlation of P and distance from edge in  2 :  -0.0298211 
+## correlation of P and distance from edge in  3 :  -0.0729992 
+## correlation of P and distance from edge in  4 :  0.07432345 
+## correlation of P and distance from edge in  5 :  0.007132603 
+## correlation of P and distance from edge in  6 :  -0.05025084 
+## correlation of P and distance from edge in  7 :  0.06382459 
+## correlation of P and distance from edge in  8 :  0.0765027 
+## correlation of P and distance from edge in  9 :  -0.0488307 
+## correlation of P and distance from edge in  10 :  -0.1587016 
+## correlation of P and distance from edge in  11 :  -0.02811973 
+## correlation of P and distance from edge in  12 :  -0.03245158 
+## correlation of P and distance from edge in  13 :  0.004392498 
+## correlation of P and distance from edge in  14 :  -0.05908022 
+## correlation of P and distance from edge in  15 :  0.02198878 
+## total correlation of P and distance from edge:  -0.01177616 
+## participant  19 : 
+## correlation of P and distance from edge in  1 :  -0.02729792 
+## correlation of P and distance from edge in  2 :  0.0139171 
+## correlation of P and distance from edge in  3 :  -0.03846481 
+## correlation of P and distance from edge in  4 :  -0.003783302 
+## correlation of P and distance from edge in  5 :  -0.0004643638 
+## correlation of P and distance from edge in  6 :  -0.1767277 
+## correlation of P and distance from edge in  7 :  -0.09315457 
+## correlation of P and distance from edge in  8 :  0.01561136 
+## correlation of P and distance from edge in  9 :  -0.1711093 
+## correlation of P and distance from edge in  10 :  0.08629491 
+## total correlation of P and distance from edge:  -0.03310002 
+## participant  22 : 
+## correlation of P and distance from edge in  1 :  -0.3237306 
+## correlation of P and distance from edge in  2 :  -0.002790895 
+## correlation of P and distance from edge in  3 :  -0.1423376 
+## correlation of P and distance from edge in  4 :  0.03464321 
+## correlation of P and distance from edge in  5 :  -0.07990108 
+## correlation of P and distance from edge in  6 :  0.05605754 
+## correlation of P and distance from edge in  7 :  0.1486309 
+## correlation of P and distance from edge in  8 :  -0.01270606 
+## correlation of P and distance from edge in  9 :  -0.05649941 
+## correlation of P and distance from edge in  10 :  0.01415173 
+## correlation of P and distance from edge in  11 :  -0.1829309 
+## correlation of P and distance from edge in  12 :  -0.03152475 
+## correlation of P and distance from edge in  13 :  -0.08446902 
+## correlation of P and distance from edge in  14 :  0.007931864 
+## correlation of P and distance from edge in  15 :  -0.02273225 
+## total correlation of P and distance from edge:  -0.0423779 
+## participant  58 : 
+## correlation of P and distance from edge in  1 :  -0.08097356 
+## correlation of P and distance from edge in  2 :  -0.1287305 
+## correlation of P and distance from edge in  3 :  0.04563187 
+## correlation of P and distance from edge in  4 :  -0.006865038 
+## correlation of P and distance from edge in  5 :  -0.01324045 
+## correlation of P and distance from edge in  6 :  -0.1061609 
+## correlation of P and distance from edge in  7 :  -0.05528435 
+## correlation of P and distance from edge in  8 :  -0.1131878 
+## correlation of P and distance from edge in  9 :  -0.1949517 
+## correlation of P and distance from edge in  10 :  -0.04987169 
+## correlation of P and distance from edge in  11 :  -0.01995165 
+## correlation of P and distance from edge in  12 :  -0.1080505 
+## correlation of P and distance from edge in  13 :  -0.03627659 
+## correlation of P and distance from edge in  14 :  0.04541566 
+## correlation of P and distance from edge in  15 :  -0.01413584 
+## total correlation of P and distance from edge:  -0.07499945 
+## participant  59 : 
+## correlation of P and distance from edge in  1 :  -0.02598525 
+## correlation of P and distance from edge in  2 :  0.03093816 
+## correlation of P and distance from edge in  3 :  -0.1272304 
+## correlation of P and distance from edge in  4 :  0.1341185 
+## correlation of P and distance from edge in  5 :  0.06644384 
+## correlation of P and distance from edge in  6 :  -0.01822353 
+## correlation of P and distance from edge in  7 :  -0.03173393 
+## correlation of P and distance from edge in  8 :  -0.1239595 
+## correlation of P and distance from edge in  9 :  0.06646556 
+## correlation of P and distance from edge in  10 :  0.04721214 
+## correlation of P and distance from edge in  11 :  -0.1312767 
+## correlation of P and distance from edge in  12 :  0.001281391 
+## correlation of P and distance from edge in  13 :  -0.03763218 
+## correlation of P and distance from edge in  14 :  -0.1279528 
+## correlation of P and distance from edge in  15 :  0.09705958 
+## total correlation of P and distance from edge:  -0.01250968 
+## participant  60 : 
+## correlation of P and distance from edge in  1 :  -0.004754408 
+## correlation of P and distance from edge in  2 :  -0.02445197 
+## correlation of P and distance from edge in  3 :  -0.01663818 
+## correlation of P and distance from edge in  4 :  0.01153915 
+## correlation of P and distance from edge in  5 :  0.0390451 
+## correlation of P and distance from edge in  6 :  -0.07932492 
+## correlation of P and distance from edge in  7 :  -0.0486931 
+## correlation of P and distance from edge in  8 :  -0.07763422 
+## correlation of P and distance from edge in  9 :  -0.05790633 
+## correlation of P and distance from edge in  10 :  -0.1104029 
+## correlation of P and distance from edge in  11 :  0.04007577 
+## correlation of P and distance from edge in  12 :  0.1000556 
+## correlation of P and distance from edge in  13 :  0.05940984 
+## correlation of P and distance from edge in  14 :  0.01367377 
+## correlation of P and distance from edge in  15 :  -0.1265704 
+## total correlation of P and distance from edge:  -0.01750158 
+## participant  62 : 
+## correlation of P and distance from edge in  1 :  0.01866562 
+## correlation of P and distance from edge in  2 :  0.08928265 
+## correlation of P and distance from edge in  3 :  -0.004770552 
+## correlation of P and distance from edge in  4 :  -0.0364317 
+## correlation of P and distance from edge in  5 :  0.04835222 
+## correlation of P and distance from edge in  6 :  0.0622789 
+## correlation of P and distance from edge in  7 :  0.1031318 
+## correlation of P and distance from edge in  8 :  0.1452982 
+## correlation of P and distance from edge in  9 :  0.03326273 
+## correlation of P and distance from edge in  10 :  0.07601725 
+## correlation of P and distance from edge in  11 :  0.05275161 
+## correlation of P and distance from edge in  12 :  0.03110939 
+## correlation of P and distance from edge in  13 :  0.02919452 
+## correlation of P and distance from edge in  14 :  0.09087114 
+## correlation of P and distance from edge in  15 :  0.04888279 
+## total correlation of P and distance from edge:  0.05094672 
+## total correlation:  -0.01639937
+</code></pre>
+
+<pre><code class="r">third_hyp()
+</code></pre>
+
+<pre><code>## here go p.values for null hypothesis that P is independend on Time: 
+## participant  9 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  0 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  0 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0.0005665802 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  0 
+## t.test ( 10 ): p.value =  0 
+## t.test ( 11 ): p.value =  0 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  0 
+## t.test ( 14 ): p.value =  0 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## participant  19 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  0 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  0 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  0 
+## t.test ( 10 ): p.value =  4.123498e-38 
+## t.test (final): p.value =  0 
+## participant  22 : 
+## t.test ( 1 ): p.value =  0.0006275982 
+## t.test ( 2 ): p.value =  7.413688e-83 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  0 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  1.566694e-270 
+## t.test ( 10 ): p.value =  1.691397e-109 
+## t.test ( 11 ): p.value =  0 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  0 
+## t.test ( 14 ): p.value =  3.170962e-124 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## participant  58 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  0 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  0 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  0 
+## t.test ( 10 ): p.value =  0 
+## t.test ( 11 ): p.value =  0 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  0 
+## t.test ( 14 ): p.value =  0 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## participant  59 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  0 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  5.217926e-319 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0.153018 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  0 
+## t.test ( 10 ): p.value =  0 
+## t.test ( 11 ): p.value =  1.244027e-45 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  1.130196e-177 
+## t.test ( 14 ): p.value =  5.407432e-78 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## participant  60 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  0 
+## t.test ( 3 ): p.value =  4.215703e-262 
+## t.test ( 4 ): p.value =  0 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  8.5342e-301 
+## t.test ( 10 ): p.value =  1.429652e-202 
+## t.test ( 11 ): p.value =  0 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  0 
+## t.test ( 14 ): p.value =  5.002949e-134 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## participant  62 : 
+## t.test ( 1 ): p.value =  0 
+## t.test ( 2 ): p.value =  4.074262e-290 
+## t.test ( 3 ): p.value =  0 
+## t.test ( 4 ): p.value =  6.554013e-166 
+## t.test ( 5 ): p.value =  0 
+## t.test ( 6 ): p.value =  0 
+## t.test ( 7 ): p.value =  0 
+## t.test ( 8 ): p.value =  0 
+## t.test ( 9 ): p.value =  0 
+## t.test ( 10 ): p.value =  0 
+## t.test ( 11 ): p.value =  0 
+## t.test ( 12 ): p.value =  0 
+## t.test ( 13 ): p.value =  2.033656e-55 
+## t.test ( 14 ): p.value =  0 
+## t.test ( 15 ): p.value =  0 
+## t.test (final): p.value =  0 
+## t.test (final): p.value =  0
+</code></pre>
+
+<pre><code class="r">third_hyp_two()
+</code></pre>
+
+<pre><code>## participant  9 : 
+## correlation of P and time in  9 : 0.1393031 
+## participant  19 : 
+## correlation of P and time in  19 : 0.2236797 
+## participant  22 : 
+## correlation of P and time in  22 : 0.3213286 
+## participant  58 : 
+## correlation of P and time in  58 : 0.3458761 
+## participant  59 : 
+## correlation of P and time in  59 : 0.2081884 
+## participant  60 : 
+## correlation of P and time in  60 : 0.1975005 
+## participant  62 : 
+## correlation of P and time in  62 : 0.2594866
+</code></pre>
+
+<h2>Results</h2>
+
+<p>The analysis for the first two hypotheses shows no apparent correlation so there is no further research on them.</p>
+
+<p>The analysis for the third hypothesis shows very strong correlation between time and pupil dilatation; and the t.test applied on the collected data (for each experiment, then for all each participant&#39;s experiments and finally for all experiments) confirms that the correlation isn&#39;t due to randomness (with probability consistently below any reasonable threshold).</p>
+
+<p>applying <code>lm</code> to the data collected by the third hypothesis gives us an approximation of the relation between the values as follows: <code>pupil dilatation = 1352.27 + .0054 * time</code>.</p>
+
+<p>So we can conclude that the length of fixations isn&#39;t dependent on the distance from the target locations nor on the distance from the boundaries of the stimulus images; and that the pupil dilatation is indeed dependent on time.</p>
+
+</body>
+
+</html>
