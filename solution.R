@@ -137,10 +137,10 @@ do_first <- function(subject) {
       results <- rbind(results, result)
     else
       results <- result
-    cat("correlation of P and distance from target in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
+    cat("correlation of length of fixation and its distance from target in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
   }
 
-  cat("total correlation of P and distance from target : ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
+  cat("total correlation of length of fixation and its distance from target : ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
 
   return (results)
 }
@@ -155,10 +155,10 @@ do_second <- function(subject) {
       results <- rbind(results, result)
     else
       results <- result
-    cat("correlation of P and distance from edge in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
+    cat("correlation of length of fixation and its distance from edge in ", i, ": ", cor(result %>% pull(Z), result %>% pull(F)), '\n')
   }
 
-  cat("total correlation of P and distance from edge: ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
+  cat("total correlation of length of fixation and its distance from edge: ", cor(results %>% pull(Z), results %>% pull(F)), '\n')
 
   return (results)
 }
@@ -226,7 +226,7 @@ second_hyp <- function() {
 }
 
 third_hyp <- function() {
-  cat("here go p.values for null hypothesis that P is independend on Time:", '\n')
+  cat("here go p.values for null hypothesis that pupil size among late fixations is the same as among early fixations:", '\n')
   for (i in participants) {
     cat("participant ", i, ":", '\n')
     result <- as.data.frame(do_third(i))
@@ -249,12 +249,20 @@ third_hyp_two <- function() {
   for (i in participants) {
     cat("participant ", i, ":", '\n')
     result <- as.data.frame(do_third(i, silent = TRUE))
-    if (exists('results'))
-      results <- rbind(results, result)
-    else
-      results <- result
 
-    cat("correlation of P and time in ",i,":",
+    cat("correlation of pupil size and time in ", i, ":",
         cor(result$P[order(result$time)], result$time[order(result$time)]), '\n')
+  }
+}
+
+third_plot <- function() {
+  for (i in participants) {
+    result <- as.data.frame(do_third(i, silent = TRUE))
+
+    print(result %>% 
+      ggplot(aes(x = time, y = P)) +
+      ylab("fixation length") +
+      xlab("time") +
+      geom_point())
   }
 }
