@@ -1,7 +1,7 @@
 ---
 title: "Analysis"
 author: "Jiří Klepl"
-date: '02 January, 2021'
+date: '07 January, 2021'
 output: html_document
 ---
 
@@ -477,7 +477,7 @@ third_hyp_two()
 
 The analysis for the first two hypotheses shows no apparent correlation so there is no further research on them.
 
-The analysis for the third hypothesis shows very strong correlation between time and pupil dilatation; and the t.test applied on the collected data (for each experiment, then for all each participant's experiments and finally for all experiments) confirms that the correlation isn't due to randomness (with probability consistently below any reasonable threshold).
+The analysis for the third hypothesis shows very strong correlation between time and pupil dilatation; and the t.test applied to the collected data split in two halves according to time (for each experiment, then for all each participant's experiments and finally for all experiments) confirms that the correlation isn't due to randomness (with probability of the difference consistently below any reasonable threshold).
 
 applying `lm` to the data collected by the third hypothesis gives us an approximation of the relation between the values as follows: `pupil dilatation = 1352.27 + .0054 * time`.
 
