@@ -483,8 +483,7 @@ third_hyp_two()
 third_plot()
 ```
 
-![plot of chunk data manipulation](./figure/data manipulation-1.png)
-![plot of chunk data manipulation](/figure/data manipulation-2.png)![plot of chunk data manipulation](figure/data manipulation-3.png)![plot of chunk data manipulation](figure/data manipulation-4.png)![plot of chunk data manipulation](figure/data manipulation-5.png)![plot of chunk data manipulation](figure/data manipulation-6.png)![plot of chunk data manipulation](figure/data manipulation-7.png)
+![plot of chunk data manipulation](figure/data%20manipulation-1.png)![plot of chunk data manipulation](/figure/data%20manipulation-2.png)![plot of chunk data manipulation](figure/data%20manipulation-3.png)![plot of chunk data manipulation](figure/data%20manipulation-4.png)![plot of chunk data manipulation](figure/data%20manipulation-5.png)![plot of chunk data manipulation](figure/data%20manipulation-6.png)![plot of chunk data manipulation](figure/data%20manipulation-7.png)
 
 ## Results
 
